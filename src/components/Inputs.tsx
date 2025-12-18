@@ -1,11 +1,26 @@
 import styled from "@emotion/styled"
+import { Flex } from "flex-yeo"
 
-export const Inputs = () => {
+interface IInputsType {
+  value?: string,
+  onChange?: () => void,
+  placeholder?: string,
+  label?: string,
+}
+
+export const Inputs = ({value, onChange, placeholder, label} : IInputsType) => {
   return (
-    <Input type="text" />
+    <Flex isColumn gap={8}>
+      <Label>{label}</Label>
+      <Input type="text" placeholder={placeholder} onChange={onChange} value={value} />
+    </Flex>
   )
 }
 
+
+const Label = styled.div `
+  font-size: 16px;
+`
 const Input = styled.input `
   width: 100%;
   height: 54px;

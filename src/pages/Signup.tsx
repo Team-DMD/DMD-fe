@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
 import { BACKGROUNDMAIN, LOGO } from "../assets";
-import { Button } from "../components";
+import { Button, NameAddModal } from "../components";
 import { Inputs } from "../components";
 import { Flex } from "flex-yeo";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const Signup = () => {
+  const [isModal, setIsModal] = useState<boolean>(false)
   return (
     <Background>
       <ContentWrapper>
@@ -16,9 +18,13 @@ export const Signup = () => {
           <SignupLink to={"/login"} color="white">
             계정이 있다면? 로그인
           </SignupLink>
-          <Button>회원가입</Button>
+          <Button onClick={() => setIsModal(true)}>회원가입</Button>
         </Flex>
       </ContentWrapper>
+      {isModal && (
+        <NameAddModal isModal={isModal} setIsModal={setIsModal}/>
+      )
+      }
       <BackgroundImg src={BACKGROUNDMAIN} alt="backgroundImg" />
     </Background>
   );

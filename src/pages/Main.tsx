@@ -2,14 +2,16 @@ import styled from "@emotion/styled"
 import { BACKGROUNDMAIN, LOGO } from "../assets"
 import { Button } from "../components"
 import { Flex } from "flex-yeo"
+import { useNavigate } from "react-router-dom"
 
 export const Main = () => {
+  const navigate = useNavigate()
   return (
     <Background>
       <ContentWrapper>
       <Flex isColumn gap={12} alignItems="center">
         <Logo src={LOGO} alt="logo"/>
-        <Button>START</Button>
+        <Button onClick={() => navigate('/login')}>START</Button>
       </Flex>
       </ContentWrapper>
       <BackgroundImg src={BACKGROUNDMAIN} alt="backgroundImg"/>

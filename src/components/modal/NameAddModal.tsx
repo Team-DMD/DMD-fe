@@ -2,8 +2,15 @@ import styled from "@emotion/styled"
 import { Flex } from "flex-yeo"
 import { Inputs } from "../Inputs"
 import { Button } from "../Button"
+import type React from "react"
 
-export const NameAddModal = () => {
+interface IModalType {
+  isModal: boolean,
+  setIsModal: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const NameAddModal = ({isModal, setIsModal}: IModalType) => {
+
   return (
     <Back>
       <Flex isColumn gap={12}>
@@ -12,7 +19,7 @@ export const NameAddModal = () => {
         </ModalContentWrapper>
         <ModalContentWrapper>
           <Inputs placeholder="이름을 입력해주세요" label="사용자 이름 설정"/>
-          <Button>이름 입력완료</Button>
+          <Button onClick={() => setIsModal(false)}>이름 입력완료</Button>
         </ModalContentWrapper>
       </Flex>
     </Back>
